@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Upload CSV</title>
+</head>
+<body>
+    <h1>Upload CSV</h1>
+    <form action="/uploader" method="post" enctype="multipart/form-data">
+        <label for="file">Escolha o arquivo CSV:</label>
+        <input type="file" name="file" id="file">
+        <br><br>
+        <label for="model_choice">Escolha o modelo:</label>
+        <select name="model_choice" id="model_choice" onchange="toggleKValue()">
+            <option value="arvore">Árvore de Decisão</option>
+            <option value="knn">KNN</option>
+        </select>
+        <br><br>
+        <div id="k_value_div" style="display:none;">
+            <label for="k_value">Escolha o valor de k para o KNN:</label>
+            <input type="number" name="k_value" id="k_value" value="3" min="1">
+            <br><br>
+        </div>
+        <input type="submit" value="Upload">
+    </form>
+
+    <script>
+        function toggleKValue() {
+            var modelChoice = document.getElementById('model_choice').value;
+            var kValueDiv = document.getElementById('k_value_div');
+            if (modelChoice === 'knn') {
+                kValueDiv.style.display = 'block';
+            } else {
+                kValueDiv.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
