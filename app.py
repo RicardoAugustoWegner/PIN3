@@ -3,14 +3,15 @@ import pandas as pd
 import joblib
 import os
 from werkzeug.utils import secure_filename
-from mainKNN import load_knn_model
+from geraModeloKNN import load_knn_model
 from sklearn.preprocessing import LabelEncoder  # Importação necessária
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
 # Carregar o modelo de árvore de decisão treinado
-modelo_arvore = joblib.load('modelos/modelo_arvore_decisao.pkl')
+modelo_arvore = joblib.load('modelos_arvore_decisao/modelo_arvore_decisao.pkl')
+modelo_knn = joblib.load('modelos_knn/modelo_knn.pkl')
 
 # Carregar o modelo KNN e normalizador
 knn_model_path = 'modelos/modelo_knn.pkl'
