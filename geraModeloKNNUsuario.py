@@ -12,7 +12,7 @@ val_size = 0.2
 test_size = 0.2
 
 # Carregando os dados
-arquivo_csv = 'peras.csv'  # caminho do arquivo
+arquivo_csv = 'MelhorModelo/peras.csv'  # caminho do arquivo
 dados = pd.read_csv(arquivo_csv)  # leitura dos dados
 print(dados.head())
 dados.info()  # verificação se há dados nulos
@@ -34,7 +34,7 @@ x_val = normalizacao.transform(x_val)
 x_test = normalizacao.transform(x_test)
 
 # Treinamento e validação do modelo
-kUsuario = 0 # k INFORMADO NA TELA PELO USUÁRIO
+kUsuario = 3 # k INFORMADO NA TELA PELO USUÁRIO
 
 # Treinamento do modelo final
 final_model = KNeighborsClassifier(n_neighbors=kUsuario)
@@ -46,4 +46,4 @@ test_accuracy = accuracy_score(y_test, y_test_pred)
 print(f"Acurácia no teste com melhor k = {kUsuario}: {test_accuracy}")
 
 # Salvando o modelo
-joblib.dump(final_model, 'modelos_knn/modelo_knn.pkl')
+joblib.dump(final_model, 'modelo_knn_usuario.pkl')

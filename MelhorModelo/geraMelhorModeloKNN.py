@@ -69,7 +69,7 @@ test_accuracy = accuracy_score(y_test, y_test_pred)
 print(f"Acurácia no teste com melhor k = {best_k}: {test_accuracy}")
 
 # Salvando o modelo
-joblib.dump(final_model, 'modelo_knn.pkl')
+joblib.dump(final_model, 'melhor_modelo_knn.pkl')
 
 # Imprimir todos os resultados
 for k, val_acc in results:
