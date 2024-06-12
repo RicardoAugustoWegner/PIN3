@@ -12,7 +12,7 @@ val_size = 0.2
 test_size = 0.2
 
 # Carregando os dados
-arquivo_csv = 'MelhorModel/peras.csv'  # caminho do arquivo
+arquivo_csv = 'MelhorModelo/peras.csv'  # caminho do arquivo
 dados = pd.read_csv(arquivo_csv)  # leitura dos dados
 print(dados.head())
 dados.info()  # verificação se há dados nulos
