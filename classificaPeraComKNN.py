@@ -15,7 +15,7 @@ def executa(file_path, k):
     if 'qualidade' in dados.columns:
         raise ValueError("O arquivo CSV não deve conter a coluna 'qualidade'.")
 
-    x = dados
+    x = dados[['id','tamanho', 'peso', 'docura', 'crocancia', 'suculencia', 'maturacao', 'acidez']]
 
     geraModeloKNNUsuario(k)
 

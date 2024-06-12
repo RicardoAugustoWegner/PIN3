@@ -5,25 +5,26 @@ from sklearn.preprocessing import LabelEncoder
 
 # Função para processar o arquivo CSV e calcular previsões com árvore de decisão
 def executa(file_path):
-    # Processar o arquivo
+    # Process the file (unchanged)
     dados = pd.read_csv(file_path)
 
+    # Check for 'qualidade' column (unchanged)
     if 'qualidade' in dados.columns:
         raise ValueError("O arquivo CSV não deve conter a coluna 'qualidade'.")
 
-    x = dados
+    # Select matching features based on training data columns
+    x = dados[['id','tamanho', 'peso', 'docura', 'crocancia', 'suculencia', 'maturacao', 'acidez']]
 
-    # Carregar o modelo de árvore de decisão pré-treinado
+    # Load the model (unchanged)
     modelo_arvore = joblib.load('MelhorModelo/modelo_arvore_decisao.pkl')
 
-    # Fazer previsões com o modelo de árvore de decisão
+    # Make predictions (unchanged)
     y_pred_arvore = modelo_arvore.predict(x)
-
     # Converter previsões para rótulos 'boa' ou 'ruim'
     label_encoder = LabelEncoder()
     label_encoder.fit(['ruim', 'boa'])
     y_pred_arvore_label = label_encoder.inverse_transform(y_pred_arvore)
-
+  
     # Adicionar previsões ao DataFrame
     dados['qualidade'] = y_pred_arvore_label
 
